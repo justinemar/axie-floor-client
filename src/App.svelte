@@ -1,7 +1,8 @@
 <script lang="ts">
 import MyAxies from "./components/MyAxies.svelte";
+import RecentRecords from "./components/RecentRecords.svelte";
 import TopWallets from "./components/TopWallets.svelte";
-import Wallet from "./components/Wallet.svelte";
+import SearchWallet from "./components/SearchWallet.svelte";
 
 	export let name: string;
 </script>
@@ -13,12 +14,12 @@ import Wallet from "./components/Wallet.svelte";
 
 	<div class="section-container">
 		<section>
-			<Wallet/>
+			<SearchWallet/>
 			<MyAxies/>
 			<TopWallets/>
 		</section>
 		<section>
-			<h3>Recent Records</h3>
+			<RecentRecords/>
 		</section>
 	</div>
 

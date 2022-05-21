@@ -1,43 +1,29 @@
 <script>
-    import { Button } from 'attractions';
-    let wallet;
 
-
-    const loadAxies = (address) => {
-        return;
-    }
-
-    const handleInput = (e) => {
-        e.preventDefault();
-        wallet = e.target.value;
-        
-        let address = wallet?.split("ronin:").join('0x')
-        if(address.length >= 42) {
-            loadAxies(address);
-        }
-    }
 </script>
 
-<div class="container my-wallet-container">
-        <div class="wrapper wallet-address">
-            <p>Wallet</p>
-            <input
-            placeholder="Check wallet address.."
-            on:input={(e) => handleInput(e)}
-            >
-        </div>
-        <!-- <Button filled>Load</Button> -->
+
+
+<div class="wallet">
+    <p>ronin:96faa503b8558b4d2554d3d3669b96a2c8d5e821</p>
+    <p><span class="p-highlight">15000</span> USD</p>
 </div>
 
 
 <style>
-  .wallet-address {
-    max-width: 200px;
-  } 
-
-  input {
-    background: #08253F;
-    padding: 10px;
-    color: #fff;
-  }
+    .wallet {
+        padding: 5px;
+        background: #02213C;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        display: flex;
+        justify-content: space-around;
+    }
+    .wallet p:first {
+        flex-grow: 1;
+    }
+    .wallet > p {
+        font-size: 20px;
+        font-weight: bolder;
+    }
 </style>

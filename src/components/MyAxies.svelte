@@ -1,4 +1,6 @@
 <script>
+import Axie from "./Axie.svelte";
+
 
 </script>
 
@@ -9,18 +11,18 @@
     <div class="wrapper my-axie">
         <p>My Axies <span class="p-highlight">32</span></p>
         <div class="axie-list">
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
-            <div class="axie"></div>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
+            <Axie/>
         </div>
 
         <p>Total Floor Worth <span class="p-highlight">300</span> USD</p>
@@ -37,13 +39,5 @@
         display: block;
         width: 500px;
         max-height: 200px;
-    }
-
-    .axie {
-        width: 120px;
-        height: 100px;
-        background: #2B445A;
-        margin: 5px;
-        display: inline-block;
     }
 </style>
