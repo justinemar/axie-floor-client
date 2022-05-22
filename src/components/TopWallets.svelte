@@ -1,5 +1,5 @@
 <script>
-    import { Loading } from 'attractions'
+import { Loading } from 'attractions'
 import Wallet from './Wallet.svelte';
 </script>
 

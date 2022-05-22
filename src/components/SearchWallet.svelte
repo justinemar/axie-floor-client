@@ -1,10 +1,15 @@
 <script>
-    import { Button } from 'attractions';
+    import MyAxies from './MyAxies.svelte';
     let wallet;
+    let floor_data;
 
-
-    const loadAxies = (address) => {
-        return;
+    const floorData = async (address) => {
+        await fetch(`http://localhost:3000/mavis/axies/${address}`)
+        .then((response) => response.json())
+        .then((res) => {
+          console.log('data', res)
+          floor_data = res;
+        });
     }
 
     const handleInput = (e) => {
@@ -13,7 +18,7 @@
         
         let address = wallet?.split("ronin:").join('0x')
         if(address.length >= 42) {
-            loadAxies(address);
+            floorData(address);
         }
     }
 </script>
@@ -28,7 +33,7 @@
         </div>
         <!-- <Button filled>Load</Button> -->
 </div>
-
+<MyAxies {floor_data}/>
 
 <style>
   .wallet-address {

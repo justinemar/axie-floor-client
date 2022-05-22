@@ -1,10 +1,8 @@
 <script lang="ts">
-import MyAxies from "./components/MyAxies.svelte";
 import RecentRecords from "./components/RecentRecords.svelte";
 import TopWallets from "./components/TopWallets.svelte";
 import SearchWallet from "./components/SearchWallet.svelte";
 
-	export let name: string;
 </script>
 
 <main>
@@ -15,7 +13,6 @@ import SearchWallet from "./components/SearchWallet.svelte";
 	<div class="section-container">
 		<section>
 			<SearchWallet/>
-			<MyAxies/>
 			<TopWallets/>
 		</section>
 		<section>
@@ -49,12 +46,6 @@ import SearchWallet from "./components/SearchWallet.svelte";
 		margin: 0 auto;
 	}
 
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
 
 	@media (min-width: 640px) {
 		main {
