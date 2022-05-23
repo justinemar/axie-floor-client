@@ -2,11 +2,25 @@
 import compact from "../utils/compact";
 import Axie from "./Axie.svelte";
 import AxieCard from "./AxieCard.svelte";
+import Filters from "./Filters.svelte";
 export let floor_data = [];
 let selectedAxie = null;
+let filteredData = [];
 
 const buildAxieCard = (event) => {
     selectedAxie = event.detail.axie;
+}
+
+
+const filter = (e) => {
+    selectedAxie = null;
+    if(e.detail.toggled) {
+        filteredData = floor_data.ranking.filter((item) => item.floor_price == null);
+        return filteredData;
+    }
+
+    filteredData = [];
+
 }
 
 </script>
@@ -17,32 +31,52 @@ const buildAxieCard = (event) => {
 <div class="container my-axies-container">
     <div class="wrapper my-axie">
         <p>My Axies <span class="p-highlight">{floor_data?.ranking?.length ?? 0}</span></p>
-        <div class="axie-list">
-            {#if floor_data && floor_data.length != 0}
-                {#each floor_data.ranking as axie (axie.id)}
-                    <Axie {axie} on:axieSelected={buildAxieCard}/>
-                {/each}
-            {/if}
+        <Filters on:filterSelected={filter}/>
+        <div class="axie-detail">
+            <div class="axie-list">
+                {#if filteredData && filteredData.length > 0}
+                    {#each filteredData as axie (axie.id)}
+                        <Axie {axie} on:axieSelected={buildAxieCard}/>
+                    {/each}
+                {:else}
+                    {#if floor_data && floor_data.length != 0}
+                        {#each floor_data.ranking as axie (axie.id)}
+                            <Axie {axie} on:axieSelected={buildAxieCard}/>
+                        {/each}
+                    {/if}
+                {/if}
         </div>
 
+        <div class="axie-card">
+            <AxieCard {selectedAxie}/>
+        </div>
+        </div>
         <p>Total Floor Worth <span class="p-highlight">{compact(floor_data?.totalWorth ?? 0)}</span> USD</p>
-    </div>
-    <div class="wrapper axie-card">
-        <p>Selected Axie</p>
-        <AxieCard {selectedAxie}/>
     </div>
 </div>
 
 
 <style>
+    .my-axie {
+        margin-right: 10px;
+    }
 
-    .my-axies-container {
+    .axie-detail {
         display: flex;
         justify-content: space-evenly;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-items: center;
+        margin-bottom: 10px;
+        margin-top: 10px;
+    }
+
+    .my-axies-container {
+        align-items: center;
     }
 
     .axie-card {
-        max-width: 450px;
+        max-width: 290px;
         width: 100%;
     }
     

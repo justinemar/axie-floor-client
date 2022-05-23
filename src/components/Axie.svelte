@@ -23,9 +23,18 @@
     style="background-image: url({axie.axie_image})"
     on:click|preventDefault={() => selectedAxie(axie)}
     >
+    {#if axie.floor_price == null }
+        <div class="overlay-active"></div>
+    {/if}
     </div>
 
 <style>
+
+    .overlay-active{
+        height: 100%;
+        width: 100%;
+        background: #011b32b5;
+    }
 
     .axie {
         width: 120px;

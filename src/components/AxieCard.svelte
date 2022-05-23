@@ -1,6 +1,16 @@
 <script>
     import compact from "../utils/compact";
+    import { AxieGene } from "agp-npm/dist/axie-gene"; // Defaults to HexType.Bit256
+
     export let selectedAxie = null;
+
+    const parseAxieGene = (hex) => {
+        if(hex != undefined)
+            return JSON.stringify(
+                    new AxieGene(hex).getGeneQuality()
+                    )
+    }
+    
 </script>
 
 <div class="card">
@@ -20,7 +30,7 @@
     </p>
     <p>
         Axie Gene <span class="p-highlight"
-            >{selectedAxie?.axie_breedCount ?? "0%"}</span
+            >{parseAxieGene(selectedAxie?.axie_genes) ?? "0"}%</span
         >
     </p>
 

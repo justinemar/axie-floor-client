@@ -7,7 +7,6 @@
         await fetch(`${process?.env?.AXIEFLOOR_SERVER}/${address}`)
         .then((response) => response.json())
         .then((res) => {
-          console.log('data', res)
           floor_data = res;
         });
     }

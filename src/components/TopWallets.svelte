@@ -1,5 +1,4 @@
 <script>
-import { Loading } from 'attractions'
 import Wallet from './Wallet.svelte';
 </script>
 
@@ -11,8 +10,6 @@ import Wallet from './Wallet.svelte';
             <Wallet/>
             <Wallet/>
         </div>
-
-        <Loading />
     </div>
 </div>
 
