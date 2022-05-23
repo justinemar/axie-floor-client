@@ -47,7 +47,7 @@ export default {
 			process: JSON.stringify({
 				env: {
 				  isProd: production,
-				  AXIEFLOOR_SERVER: production ? 'https://axiefloor-server.herokuapp.com/mavis/axies/':'http://localhost:3000/mavis/axies/'
+				  AXIEFLOOR_SERVER: production ? 'https://axiefloor-server.herokuapp.com/mavis/axies':'http://localhost:3000/mavis/axies'
 				}
 			  })
 		}),
