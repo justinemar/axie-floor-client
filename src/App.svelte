@@ -2,12 +2,18 @@
 import RecentRecords from "./components/RecentRecords.svelte";
 import TopWallets from "./components/TopWallets.svelte";
 import SearchWallet from "./components/SearchWallet.svelte";
-
+import { InlineNotification } from "carbon-components-svelte";
 </script>
 
 <main>
 	<header>
 		<div class="logo"></div>
+		<InlineNotification
+		hideCloseButton
+		kind="info"
+		title="WIP:"
+		subtitle="This is Work in Progress and might break anytime :c"
+		/>
 	</header>
 
 	<div class="section-container">
