@@ -7,6 +7,8 @@ import sveltePreprocess from 'svelte-preprocess';
 import typescript from '@rollup/plugin-typescript';
 import css from 'rollup-plugin-css-only';
 import images from 'rollup-plugin-image-files';
+import replace from '@rollup/plugin-replace';
+
 const svelteConfig = require('./svelte.config.js');  // it has to be a CommonJS import
 const production = !process.env.ROLLUP_WATCH;
 
@@ -41,6 +43,14 @@ export default {
 	},
 	plugins: [
 		images(),
+		replace({
+			process: JSON.stringify({
+				env: {
+				  isProd: production,
+				  AXIEFLOOR_SERVER: production ? 'https://axiefloor-server.herokuapp.com/mavis/axies/':'http://localhost:3000/mavis/axies/'
+				}
+			  })
+		}),
 		svelte({
 			...svelteConfig,
 			preprocess: sveltePreprocess({ sourceMap: !production }),

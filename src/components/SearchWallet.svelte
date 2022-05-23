@@ -4,7 +4,7 @@
     let floor_data;
 
     const floorData = async (address) => {
-        await fetch(`http://localhost:3000/mavis/axies/${address}`)
+        await fetch(`${process?.env?.AXIEFLOOR_SERVER}/${address}`)
         .then((response) => response.json())
         .then((res) => {
           console.log('data', res)
