@@ -19,10 +19,10 @@ import { InlineNotification } from "carbon-components-svelte";
 	<div class="section-container">
 		<section>
 			<SearchWallet/>
-			<TopWallets/>
+			<!-- <TopWallets/> -->
 		</section>
 		<section>
-			<RecentRecords/>
+			<!-- <RecentRecords/> -->
 		</section>
 	</div>
 

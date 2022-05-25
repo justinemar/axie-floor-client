@@ -1,6 +1,9 @@
 <script>
+import { onMount } from 'svelte';
+
     import MyAxies from './MyAxies.svelte';
     let wallet;
+    let walletInput;
     let floor_data;
 
     const floorData = async (address) => {
@@ -10,6 +13,15 @@
           floor_data = res;
         });
     }
+    
+
+    onMount(async() => {
+      let recentAddress = localStorage.getItem('wallet') || '';
+      walletInput.value = recentAddress;
+      if(recentAddress) {
+        floorData(recentAddress)
+      }
+    })
 
     const handleInput = (e) => {
         e.preventDefault();
@@ -17,6 +29,7 @@
         
         let address = wallet?.split("ronin:").join('0x')
         if(address.length >= 42) {
+            localStorage.setItem('wallet', address);
             floorData(address);
         }
     }
@@ -28,6 +41,7 @@
             <input
             placeholder="Check wallet address.."
             on:input={(e) => handleInput(e)}
+            bind:this={walletInput}
             >
         </div>
         <!-- <Button filled>Load</Button> -->
