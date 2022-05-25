@@ -20,19 +20,22 @@ import { Loading } from "carbon-components-svelte";
     onMount(async() => {
       let recentAddress = localStorage.getItem('wallet') || '';
       walletInput.value = recentAddress;
-      if(recentAddress) {
+      if(recentAddress && isValidAddress(recentAddress)) {
         floorData(recentAddress)
       }
     })
 
+    const isValidAddress = (wallet) => {
+      let isValid = wallet.split(":")[0] == 'ronin' || wallet?.split("")[0] == '0' && wallet?.split("")[1] == 'x';
+      return isValid;
+    }
+
     const handleInput = (e) => {
         e.preventDefault();
         wallet = e.target.value;
-        
-        let address = wallet?.split("ronin:").join('0x')
-        if(address.length >= 42) {
-            localStorage.setItem('wallet', address);
-            floorData(address);
+        if(isValidAddress(wallet) && wallet.length >= 42) {
+            localStorage.setItem('wallet', wallet);
+            floorData(wallet);
         }
     }
 </script>
