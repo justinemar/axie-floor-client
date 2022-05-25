@@ -1,16 +1,18 @@
 <script>
 import { onMount } from 'svelte';
-
+import { Loading } from "carbon-components-svelte";
     import MyAxies from './MyAxies.svelte';
     let wallet;
     let walletInput;
     let floor_data;
-
+    let loading;
     const floorData = async (address) => {
+        loading = true;
         await fetch(`${process?.env?.AXIEFLOOR_SERVER}/${address}`)
         .then((response) => response.json())
         .then((res) => {
           floor_data = res;
+          loading = false;
         });
     }
     
@@ -44,9 +46,12 @@ import { onMount } from 'svelte';
             bind:this={walletInput}
             >
         </div>
-        <!-- <Button filled>Load</Button> -->
 </div>
-<MyAxies {floor_data}/>
+{#if loading }
+  <Loading withOverlay={false} small />
+  {:else}
+  <MyAxies {floor_data}/>
+{/if}
 
 <style>
   .wallet-address {
